@@ -1,0 +1,50 @@
+.hero {
+  padding: 96px 8% 84px;
+  background:
+    linear-gradient(135deg, rgba(215, 38, 61, 0.82), rgba(14, 17, 24, 0.92)),
+    linear-gradient(90deg, #141926, #33101a);
+  color: var(--color-surface);
+}
+
+.hero h1 {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  font-size: clamp(2.6rem, 7vw, 5rem);
+  line-height: 1.05;
+  font-weight: 900;
+}
+
+main {
+  min-height: 42vh;
+  padding: 56px 8%;
+  background: transparent;
+}
+
+main::before {
+  display: block;
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: 34px;
+  border: 1px solid var(--color-border);
+  border-radius: 8px;
+  background: rgba(248, 250, 252, 0.08);
+  box-shadow: 0 24px 70px var(--color-shadow);
+  color: var(--color-muted);
+  content: "Welcome to the home page.";
+  font-size: 1.1rem;
+  line-height: 1.6;
+}
+
+@media (max-width: 620px) {
+  .hero {
+    padding: 64px 6%;
+  }
+
+  main {
+    padding: 32px 6%;
+  }
+
+  main::before {
+    padding: 24px;
+  }
+}

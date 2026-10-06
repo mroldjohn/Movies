@@ -1,0 +1,9 @@
+<article class="movie-card"> 
+    <span class="movie-label">Watch now</span> 
+    <h2>{{ title }}</h2> 
+    <span class="movie-category">{{category}}</span>
+    <p class="movie-desc">{{ desc }}</p> 
+    <p class="movie-duration"> Διάρκεια: <strong>{{
+duration }} '</strong> </p> 
+<a class="movie-button" [routerLink]="['/movies', slug]"> More Information
+</a> </article>

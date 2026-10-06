@@ -1,0 +1,44 @@
+<section class="hero">
+    <h1>{{pageTitle}}</h1>
+
+</section>
+<section class="movies-section">
+    <div class="movies-btns">
+        <div class="stats">
+            <p>Available Movies right now <strong>{{availableMovies}}</strong></p>
+            <a class="add-movie-link" routerLink="/movies/add-movies">Add Movie</a>
+        </div>
+        <div class="movies-categories">
+            <button 
+                type="button" 
+                [class.active]="movieCategory === 'All'" 
+                (click)="setCategory('All')">
+                All
+            </button>
+
+            @for(category of categories; track category){
+                <button 
+                    type="button" 
+                    [class.active]="movieCategory === category" 
+                    (click)="setCategory(category)">
+                    {{category}}
+                </button>
+            }
+        </div>
+    </div>
+    <div class="movies-grid"> 
+        @if(filteredMovies.length===0){
+                <p class="movies0">No Movies Available</p>
+        }
+        @for (movie of filteredMovies; track movie.id) {
+                <app-movie-card
+                class="movie-card"
+                [title]="movie.title"
+                [desc]="movie.desc"
+                [duration]="movie.duration"
+                [slug]="movie.slug"
+                [category]="movie.category">
+                </app-movie-card>
+        }
+    </div>
+</section>

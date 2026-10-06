@@ -1,0 +1,12 @@
+<section class="movie-details">
+    <span class="movie-label">Watch now</span> 
+    <h2>{{ movie?.title }}</h2> 
+    <span class="movie-category">{{movie?.category}}</span>
+    <p class="movie-desc">{{ movie?.desc }}</p> 
+    <p class="movie-duration"> Διάρκεια: <strong>{{
+    movie?.duration }} '</strong> </p> 
+    <button class="delete-button" type="button" (click)="deleteMovie()">
+        Delete Movie
+    </button>
+    <a routerLink="/movies">Back to Movies</a>
+</section>

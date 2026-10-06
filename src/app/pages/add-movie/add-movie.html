@@ -1,0 +1,81 @@
+<div class="add-movie-page">
+    <nav class="breadcrumbs">
+        <a routerLink="/">Home</a>
+        <span>/</span>
+        <a routerLink="/movies/add-movies">Add Movie</a>
+    </nav>
+
+    <section class="layout">
+        <div class="label">
+            <h2>Add a new movie to the list</h2>
+            <a class="back-link" routerLink="/movies">Back to Movies</a>
+        </div>
+        <fieldset class="form-panel">
+            <form class="add-movie-form" [formGroup]="movieForm" (ngSubmit)="onSubmit()">
+
+                <label for="title">Title</label>
+                <input type="text" id="title" formControlName="title" placeholder="Movie Title">
+                @if (movieForm.controls.title.touched && movieForm.controls.title.invalid) {
+                    <div class="field-error">
+                        <p>
+                            @if (movieForm.controls.title.hasError('required')) {
+                                Title is required
+                            } @else {
+                                Write at least 2 characters
+                            }
+                        </p>
+                    </div>
+                }
+
+                <label for="category">Category</label>
+                <select id="category" formControlName="category">
+                    <option value="">Choose a category</option>
+                    @for (categoryAllowed of categories; track categoryAllowed) {
+                        <option [value]="categoryAllowed">{{ categoryAllowed }}</option>
+                    }
+                </select>
+                @if (movieForm.controls.category.touched && movieForm.controls.category.invalid) {
+                    <div class="field-error">
+                        <p>
+                            @if (movieForm.controls.category.hasError('required')) {
+                                Category is required
+                            } @else {
+                                Choose one of the allowed categories.
+                            }
+                        </p>
+                    </div>
+                }
+
+                <label for="description">Description</label>
+                <textarea id="description" formControlName="description" placeholder="Movie Description" rows="4"></textarea>
+                @if (movieForm.controls.description.touched && movieForm.controls.description.invalid) {
+                    <div class="field-error">
+                        <p>
+                            @if (movieForm.controls.description.hasError('required')) {
+                                Description is required
+                            } @else {
+                                Write at least 15 characters
+                            }
+                        </p>
+                    </div>
+                }
+
+                <label for="duration">Duration</label>
+                <input type="number" id="duration" formControlName="duration" placeholder="Movie Duration" min="1" max="400">
+                @if (movieForm.controls.duration.touched && movieForm.controls.duration.invalid) {
+                    <div class="field-error">
+                        <p>
+                            @if (movieForm.controls.duration.hasError('required')) {
+                                Duration is required
+                            } @else {
+                                Duration must be at least 1 to 400 minutes
+                            }
+                        </p>
+                    </div>
+                }
+
+                <button class="submit-btn" type="submit">Submit</button>
+            </form>
+        </fieldset>
+    </section>
+</div>
